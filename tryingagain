@@ -1,0 +1,14 @@
+import pandas as pd
+import sqlite3
+
+# Load the CSV into a DataFrame
+df = pd.read_csv("Admissions.csv")
+
+# Create an SQLite database and connect to it
+conn = sqlite3.connect("admissions.db")
+
+# Write the DataFrame to the database
+df.to_sql("admissions_data", conn, if_exists="replace", index=False)
+
+# Close the database connection
+conn.close()
